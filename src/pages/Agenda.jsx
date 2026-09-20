@@ -4,6 +4,7 @@ import ChromeButton from '../components/ui/ChromeButton';
 import StatusBadge from '../components/ui/StatusBadge';
 import Modal from '../components/ui/Modal';
 import useToast from '../hooks/useToast';
+import useArtists from '../hooks/useArtists';
 import {
   Calendar as CalendarIcon,
   Plus,
@@ -128,6 +129,7 @@ const formatEndTime = (startTime, durationHours) => {
 };
 
 const Agenda = () => {
+  const { artists } = useArtists();
   const [sessions, setSessions] = useState(INITIAL_SESSIONS);
   const [selectedArtist, setSelectedArtist] = useState('all');
   const [selectedDate, setSelectedDate] = useState('2026-09-03');
@@ -140,7 +142,7 @@ const Agenda = () => {
   const [formData, setFormData] = useState({
     client: '',
     phone: '',
-    artistId: 'rodrigo',
+    artistId: artists[0]?.id || 'art-1',
     style: '',
     date: '2026-09-03',
     startTime: '11:00',
@@ -155,7 +157,9 @@ const Agenda = () => {
     const startMins = timeToMinutes(testData.startTime);
     const endMins = startMins + Number(testData.durationHours) * 60;
 
-    const artistObj = INITIAL_ARTISTS.find((a) => a.id === testData.artistId);
+    const artistObj = artists.find(
+      (a) => a.id === testData.artistId || a.name.toLowerCase().includes(testData.artistId.toLowerCase())
+    ) || INITIAL_ARTISTS.find((a) => a.id === testData.artistId);
     const artistName = artistObj ? artistObj.name.split(' (')[0] : '';
 
     for (const s of sessions) {
@@ -242,7 +246,7 @@ const Agenda = () => {
       return;
     }
 
-    const artistObj = INITIAL_ARTISTS.find((a) => a.id === formData.artistId);
+    const artistObj = artists.find((a) => a.id === formData.artistId) || INITIAL_ARTISTS.find((a) => a.id === formData.artistId);
     const newSession = {
       id: Date.now(),
       client: formData.client,
@@ -269,7 +273,7 @@ const Agenda = () => {
     setFormData({
       client: '',
       phone: '',
-      artistId: 'rodrigo',
+      artistId: artists[0]?.id || 'art-1',
       style: '',
       date: selectedDate,
       startTime: '11:00',
@@ -291,8 +295,13 @@ const Agenda = () => {
     }
   };
 
+  const selectedArtistObj = artists.find((a) => a.id === selectedArtist);
+
   const filteredSessions = sessions.filter((s) => {
-    const matchArtist = selectedArtist === 'all' || s.artistId === selectedArtist;
+    const matchArtist =
+      selectedArtist === 'all' ||
+      s.artistId === selectedArtist ||
+      (selectedArtistObj && s.artist.toLowerCase() === selectedArtistObj.name.toLowerCase());
     const matchDate = s.date === selectedDate;
     return matchArtist && matchDate;
   });
@@ -352,9 +361,10 @@ const Agenda = () => {
               onChange={(e) => setSelectedArtist(e.target.value)}
               className="bg-neutral-900 border border-neutral-800 text-xs font-mono text-neutral-200 px-3 py-1.5 rounded-sm focus:outline-none focus:border-chrome transition-colors"
             >
-              {INITIAL_ARTISTS.map((a) => (
+              <option value="all">Todos os Artistas</option>
+              {artists.map((a) => (
                 <option key={a.id} value={a.id}>
-                  {a.name}
+                  {a.name} ({a.tag === 'residente' ? 'Residente' : 'Visitante'})
                 </option>
               ))}
             </select>
@@ -545,9 +555,9 @@ const Agenda = () => {
                 onChange={(e) => handleFormChange('artistId', e.target.value)}
                 className="w-full bg-neutral-900 border border-neutral-800 text-xs text-white p-2.5 rounded focus:outline-none focus:border-chrome transition-colors"
               >
-                {INITIAL_ARTISTS.filter((a) => a.id !== 'all').map((a) => (
+                {artists.map((a) => (
                   <option key={a.id} value={a.id}>
-                    {a.name}
+                    {a.name} ({a.tag === 'residente' ? 'Residente' : 'Visitante / Guest'}) - {a.specialty}
                   </option>
                 ))}
               </select>

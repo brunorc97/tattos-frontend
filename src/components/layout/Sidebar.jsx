@@ -6,6 +6,7 @@ import {
   FileHeart, 
   Package, 
   BadgeDollarSign, 
+  Users,
   Skull,
   LogOut 
 } from 'lucide-react';
@@ -14,6 +15,7 @@ import useAuth from '../../hooks/useAuth';
 const navItems = [
   { name: 'Dashboard', path: '/', icon: LayoutDashboard },
   { name: 'Agenda', path: '/agenda', icon: CalendarDays },
+  { name: 'Tatuadores', path: '/tatuadores', icon: Users },
   { name: 'Ficha Anamnese', path: '/anamnese', icon: FileHeart },
   { name: 'Estoque', path: '/estoque', icon: Package },
   { name: 'Financeiro', path: '/financeiro', icon: BadgeDollarSign },
@@ -31,7 +33,7 @@ const Sidebar = () => {
             <Skull className="w-6 h-6 text-chrome" />
           </div>
           <div>
-            <h1 className="font-blackletter text-2xl text-neutral-100 tracking-wider">
+            <h1 className="font-title font-extrabold text-xl text-neutral-100 tracking-tight">
               TattOS
             </h1>
             <p className="text-[10px] text-neutral-500 uppercase tracking-widest font-mono">

@@ -873,7 +873,7 @@ const FichaAnamnese = () => {
               {/* Cabeçalho do Pergaminho */}
               <div className="p-4 bg-gradient-to-b from-neutral-900 to-neutral-950 border border-neutral-800 text-center rounded relative overflow-hidden">
                 <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-chrome/50 to-transparent" />
-                <h2 className="font-blackletter text-2xl text-white tracking-widest">
+                <h2 className="font-title font-bold text-xl sm:text-2xl text-white tracking-tight">
                   TattOS Body Art Studio
                 </h2>
                 <p className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest mt-0.5">

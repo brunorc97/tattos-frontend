@@ -97,17 +97,21 @@ const Dashboard = () => {
                 {new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric' })}
               </span>
             </div>
-            <h1 className="font-blackletter text-3xl text-neutral-100 tracking-wide">
+            <h1 className="font-title font-bold text-2xl sm:text-3xl text-neutral-100 tracking-tight">
               Estúdio Operando a Todo Vapor
             </h1>
             <p className="text-xs text-neutral-400 font-sans mt-1">
               3 bancadas em atividade simultânea. Controle rigoroso de biossegurança e fluxo financeiro em tempo real.
             </p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
+            <ChromeButton onClick={() => navigate('/tatuadores')} variant="secondary">
+              <Users className="w-4 h-4 text-chrome" />
+              <span>Tatuadores</span>
+            </ChromeButton>
             <ChromeButton onClick={() => navigate('/agenda')} variant="secondary">
               <Calendar className="w-4 h-4" />
-              <span>Ver Grade Completa</span>
+              <span>Ver Grade</span>
             </ChromeButton>
             <ChromeButton onClick={() => navigate('/anamnese')}>
               <Users className="w-4 h-4" />

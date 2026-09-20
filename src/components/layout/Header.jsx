@@ -5,7 +5,7 @@ const Header = ({ title = 'Painel de Controle' }) => {
   return (
     <header className="h-16 border-b border-neutral-800/80 bg-neutral-950/80 backdrop-blur-md px-8 flex items-center justify-between sticky top-0 z-30">
       <div>
-        <h2 className="text-base font-semibold text-neutral-100 uppercase tracking-wider font-sans">
+        <h2 className="text-sm font-bold text-neutral-100 uppercase tracking-wider font-title">
           {title}
         </h2>
       </div>

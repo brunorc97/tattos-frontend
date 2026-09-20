@@ -45,7 +45,7 @@ const Login = () => {
           <div className="w-16 h-16 mx-auto mb-4 bg-neutral-900 border border-chrome/50 rounded-sm flex items-center justify-center shadow-chrome-glow">
             <Skull className="w-9 h-9 text-chrome" />
           </div>
-          <h1 className="font-blackletter text-4xl text-neutral-100 tracking-wider">
+          <h1 className="font-title font-extrabold text-3xl sm:text-4xl text-neutral-100 tracking-tight">
             TattOS
           </h1>
           <p className="text-xs text-neutral-500 uppercase tracking-widest font-mono mt-1">

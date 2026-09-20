@@ -52,7 +52,7 @@ const LowriderCard = ({
         <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-800/80 bg-neutral-900/40">
           <div>
             {title && (
-              <h3 className="text-sm font-semibold tracking-wider text-neutral-100 uppercase font-sans flex items-center gap-2">
+              <h3 className="text-sm font-bold tracking-wider text-neutral-100 uppercase font-title flex items-center gap-2">
                 <span className="inline-block w-1.5 h-1.5 bg-chrome rounded-full shadow-[0_0_8px_#C0C0C0]" />
                 {title}
               </h3>

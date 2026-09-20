@@ -239,7 +239,7 @@ const Estoque = () => {
               Monitor de Ruptura em Tempo Real
             </span>
           </div>
-          <h1 className="font-blackletter text-3xl text-neutral-100 tracking-wide">
+          <h1 className="font-title font-bold text-2xl sm:text-3xl text-neutral-100 tracking-tight">
             Estoque de Agulhas, Tintas e Descartáveis
           </h1>
           <p className="text-xs text-neutral-400 font-sans mt-1">

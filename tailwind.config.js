@@ -32,9 +32,11 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        blackletter: ['"UnifrakturMaguntia"', '"Pirata One"', 'serif'],
-        script: ['"Great Vibes"', 'cursive'],
+        sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+        title: ['"Plus Jakarta Sans"', '"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+        heading: ['"Plus Jakarta Sans"', '"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', '"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+        blackletter: ['"Plus Jakarta Sans"', '"Inter"', 'sans-serif'], // Fallback seguro
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       boxShadow: {

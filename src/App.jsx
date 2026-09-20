@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ToastProvider } from './context/ToastContext';
+import { ArtistsProvider } from './context/ArtistsContext';
 import useAuth from './hooks/useAuth';
 
 // Layout
@@ -11,6 +12,7 @@ import Header from './components/layout/Header';
 // Pages
 import Dashboard from './pages/Dashboard';
 import Agenda from './pages/Agenda';
+import Tatuadores from './pages/Tatuadores';
 import FichaAnamnese from './pages/FichaAnamnese';
 import Estoque from './pages/Estoque';
 import Financeiro from './pages/Financeiro';
@@ -48,52 +50,62 @@ function App() {
   return (
     <AuthProvider>
       <ToastProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route
-              path="/"
-              element={
-                <ProtectedLayout title="Painel de Controle">
-                  <Dashboard />
-                </ProtectedLayout>
-              }
-            />
-            <Route
-              path="/agenda"
-              element={
-                <ProtectedLayout title="Agenda de Sessões">
-                  <Agenda />
-                </ProtectedLayout>
-              }
-            />
-            <Route
-              path="/anamnese"
-              element={
-                <ProtectedLayout title="Fichas de Anamnese">
-                  <FichaAnamnese />
-                </ProtectedLayout>
-              }
-            />
-            <Route
-              path="/estoque"
-              element={
-                <ProtectedLayout title="Controle de Estoque">
-                  <Estoque />
-                </ProtectedLayout>
-              }
-            />
-            <Route
-              path="/financeiro"
-              element={
-                <ProtectedLayout title="Fluxo de Caixa & Finanças">
-                  <Financeiro />
-                </ProtectedLayout>
-              }
-            />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </BrowserRouter>
+        <ArtistsProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route
+                path="/"
+                element={
+                  <ProtectedLayout title="Painel de Controle">
+                    <Dashboard />
+                  </ProtectedLayout>
+                }
+              />
+              <Route
+                path="/agenda"
+                element={
+                  <ProtectedLayout title="Agenda de Sessões">
+                    <Agenda />
+                  </ProtectedLayout>
+                }
+              />
+              <Route
+                path="/tatuadores"
+                element={
+                  <ProtectedLayout title="Cadastro de Tatuadores">
+                    <Tatuadores />
+                  </ProtectedLayout>
+                }
+              />
+              <Route
+                path="/anamnese"
+                element={
+                  <ProtectedLayout title="Fichas de Anamnese">
+                    <FichaAnamnese />
+                  </ProtectedLayout>
+                }
+              />
+              <Route
+                path="/estoque"
+                element={
+                  <ProtectedLayout title="Controle de Estoque">
+                    <Estoque />
+                  </ProtectedLayout>
+                }
+              />
+              <Route
+                path="/financeiro"
+                element={
+                  <ProtectedLayout title="Fluxo de Caixa & Finanças">
+                    <Financeiro />
+                  </ProtectedLayout>
+                }
+              />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </BrowserRouter>
+        </ArtistsProvider>
       </ToastProvider>
     </AuthProvider>
   );
